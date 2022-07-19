@@ -201,7 +201,7 @@
         <!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-contact.html">
+            <a class="nav-link collapsed" href="./product.php">
                 <i class="bi bi-envelope"></i>
                 <span>Products</span>
             </a>
