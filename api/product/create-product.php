@@ -60,10 +60,10 @@ function checkcategory($cat)
     $sql = "SELECT `cat_id` FROM `es_category` WHERE `es_category`.`cat_name`='$cat'";
     $result =  mysqli_query($con, $sql);
     if (mysqli_num_rows($result) == 0) {
-        $newCatSql = "INSERT INTO `es_brand`(`brand_name`) VALUES ('$cat')";
+        $newCatSql = "INSERT INTO `es_category`(`cat_name`) VALUES ('$cat')";
         $newCat = mysqli_query($con, $newCatSql);
         if ($newCat) {
-            checkbrand($cat);
+            checkcategory($cat);
             exit();
         }
     } else {
