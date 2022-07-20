@@ -11,27 +11,41 @@ if (isset($_POST["btncreate-product"])) {
     $discount = $_POST["discount"];
     $brand = $_POST["brand"];
     $category = $_POST["category"];
-    // $image = $_POST["image"];
+    $image = $_FILES["image"];
 
     // check if brand already exists
-    checkbrand($brand);
-
+    $brandId = checkbrand($brand);
     // check if category already exists
-    checkcategory($category);
+    $catId = checkcategory($category);
 
-    // $path = "../images/" . basename($_FILES["pdimage"]["name"]);
-    // $size = $_FILES["pdimage"]["size"];
 
-    // if (move_uploaded_file($_FILES["pdimage"]["tmp_name"], $path)) {
+    $filename = basename($image["name"]);
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+    $newfilename = $title . "main" . md5($filename) . "." . $extension;
+    $path = "../../images/main/" . $newfilename;
+    $isImageUploaded;
+    if (!isset($image["name"]) == null) {
+        if (!file_exists("../../images/main")) {
+            mkdir("../../images/main");
+            $isImageUploaded = move_uploaded_file($image["tmp_name"], $path);
+        } else {
+            $isImageUploaded = move_uploaded_file($image["tmp_name"], $path);
+        }
+    } else {
+        echo "<script>alert('Please insert image first')</script>";
+    }
 
-    //     if (mysqli_query($con, "Insert Into producttable(productGroup,productTag,productDepartment,productName,productColor,productImage,productCode,productPrice,productCost,productDescription,productUnit,productOnline) 
-    // 	values('$group','$tag','$dept','$name','$color','$path','#dummycode','$price','$cost','$desc','$unit','$online')")) {
-    //         echo json_encode(array("message" => "Record Inserted succesfullly"));
-    //         header("location:../product.php");
-    //     }
-    // } else {
-    //     c
-    // }
+    if ($isImageUploaded) {
+        $sql = "INSERT INTO `es_product` (`prod_id`, `brand_id`, `cat_id`, `prod_title`, `prod_desc`, `prod_longdesc`, `prod_unit`, `prod_price`, `prod_discount`, `prod_src`) VALUES (NULL,$brandId,$catId,'$title','$shortdesc','$longdesc',$unit,$price,$discount, '$newfilename')";
+
+
+        $query = mysqli_query($con, $sql);
+        if ($query) {
+            header("Location: http://localhost/Emaan%20Store%20Admin/product.php");
+        } else {
+            echo "Error in SQl";
+        }
+    }
 }
 function checkbrand($bnd)
 {
@@ -42,14 +56,12 @@ function checkbrand($bnd)
         $newBrandSql = "INSERT INTO `es_brand`(`brand_name`) VALUES ('$bnd')";
         $newBrand = mysqli_query($con, $newBrandSql);
         if ($newBrand) {
-            checkbrand($bnd);
-            exit();
+            return checkbrand($bnd);
         }
     } else {
         while (($row = $result->fetch_assoc()) !== null) {
             if ($row['brand_id']) {
-                echo $row['brand_id'] . "<br>";
-                exit();
+                return $row['brand_id'];
             }
         }
     }
@@ -63,14 +75,12 @@ function checkcategory($cat)
         $newCatSql = "INSERT INTO `es_category`(`cat_name`) VALUES ('$cat')";
         $newCat = mysqli_query($con, $newCatSql);
         if ($newCat) {
-            checkcategory($cat);
-            exit();
+            return checkcategory($cat);
         }
     } else {
         while (($row = $result->fetch_assoc()) !== null) {
             if ($row['cat_id']) {
-                echo $row['cat_id'] . "<br>";
-                exit();
+                return $row['cat_id'];
             }
         }
     }
