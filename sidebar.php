@@ -185,7 +185,7 @@
         <!-- End Icons Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
+            <a class="nav-link collapsed" href="./user.php">
                 <i class="bi bi-person"></i>
                 <span>Users</span>
             </a>
@@ -193,7 +193,7 @@
         <!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
+            <a class="nav-link collapsed" href="./customer.php">
                 <i class="bi bi-question-circle"></i>
                 <span>Customers</span>
             </a>

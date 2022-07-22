@@ -25,7 +25,7 @@ include('./api/config.php');
             <div class="col-lg-12">
                 <table class="table table-bordered table-striped table-hover">
                     <tr>
-                        <th>Brand Id</th>
+                        <th>S.No</th>
                         <th>Brand Name</th>
                         <th>Actions</th>
                     </tr>

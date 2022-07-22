@@ -92,7 +92,7 @@ include('./sidebar.php')
           </div>
           <!-- End Revenue Card -->
 
-          <!-- Customers Card -->
+          <!-- F Card -->
           <div class="col-xxl-4 col-xl-12">
             <div class="card info-card customers-card">
               <div class="filter">
