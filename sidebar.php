@@ -7,6 +7,18 @@
                 <span>Dashboard</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./storeinfo.php">
+                <i class="bi bi-shop"></i>
+                <span>Store Info</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./orders.php">
+                <i class="bi bi-cart"></i>
+                <span>Orders</span>
+            </a>
+        </li>
         <!-- End Dashboard Nav -->
 
         <!-- <li class="nav-item">
