@@ -235,6 +235,14 @@
             </a>
         </li>
         <!-- End Login Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="./stock.php">
+                <i class="bi bi-bar-chart-fill"></i>
+                <span>Stock</span>
+            </a>
+        </li>
+        <!-- End Login Page Nav -->
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="pages-error-404.html">
